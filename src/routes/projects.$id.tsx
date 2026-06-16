@@ -3,7 +3,7 @@ import { ArrowLeft, Play, ExternalLink, Github, Cpu, Sparkles } from "lucide-rea
 import { Nav } from "@/components/portfolio/nav";
 import { Footer } from "@/components/portfolio/sections";
 import { useViewerRole } from "@/hooks/use-viewer-role";
-import { portfolio } from "@/data/portfolio";
+import { portfolio, type Project } from "@/data/portfolio";
 
 export const Route = createFileRoute("/projects/$id")({
   loader: ({ params }) => {
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/projects/$id")({
 });
 
 function ProjectPage() {
-  const { project } = Route.useLoaderData();
+  const { project } = Route.useLoaderData() as { project: Project };
   const [role] = useViewerRole();
 
   return (
@@ -101,7 +101,7 @@ function ProjectPage() {
             {Object.entries(project.metrics).map(([k, v]) => (
               <div key={k} className="rounded-xl border border-white/8 bg-white/5 p-3">
                 <dt className="text-[10px] uppercase tracking-widest text-muted-foreground">{k}</dt>
-                <dd className="mt-1 font-display text-sm font-semibold">{v}</dd>
+                <dd className="mt-1 font-display text-sm font-semibold">{String(v)}</dd>
               </div>
             ))}
           </dl>
