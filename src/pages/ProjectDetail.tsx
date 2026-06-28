@@ -1,41 +1,35 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { Link, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, Play, ExternalLink, Github, Cpu, Sparkles } from "lucide-react";
 import { Nav } from "@/components/portfolio/nav";
 import { Footer } from "@/components/portfolio/sections";
 import { useViewerRole } from "@/hooks/use-viewer-role";
-import { portfolio, type Project } from "@/data/portfolio";
+import { portfolio } from "@/data/portfolio";
+import { siteConfig } from "@/config/site";
+import NotFound from "./NotFound";
 
-export const Route = createFileRoute("/projects/$id")({
-  loader: ({ params }) => {
-    const project = portfolio.projects.find((p) => p.id === params.id);
-    if (!project) throw notFound();
-    return { project };
-  },
-  head: ({ loaderData }) => {
-    const p = loaderData?.project;
-    const title = p ? `${p.title} — ${p.category} | Abikarthick G` : "Project | Abikarthick G";
-    const desc = p?.description ?? "Project case study.";
-    return {
-      meta: [
-        { title },
-        { name: "description", content: desc },
-        { property: "og:title", content: title },
-        { property: "og:description", content: desc },
-      ],
-    };
-  },
-  component: ProjectPage,
-  notFoundComponent: () => (
-    <div className="grid min-h-screen place-items-center">Project not found.</div>
-  ),
-});
-
-function ProjectPage() {
-  const { project } = Route.useLoaderData() as { project: Project };
+export default function ProjectDetail() {
+  const { id } = useParams<{ id: string }>();
+  const project = portfolio.projects.find((p) => p.id === id);
   const [role] = useViewerRole();
+
+  if (!project) return <NotFound />;
+
+  const title = `${project.title} — ${project.category} | Abikarthick G`;
+  const desc = project.description;
+  const url = `${siteConfig.siteUrl}/projects/${project.id}`;
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={desc} />
+        <link rel="canonical" href={url} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={desc} />
+        <meta property="og:url" content={url} />
+        <meta property="og:type" content="article" />
+      </Helmet>
       <Nav role={role} />
       <main className="mx-auto mt-28 max-w-5xl px-4">
         <Link
@@ -141,7 +135,10 @@ function ProjectPage() {
           </div>
           <div className="mt-3 grid gap-3">
             {project.challenges.map((c, i) => (
-              <div key={i} className="grid gap-2 rounded-xl border border-white/8 bg-white/5 p-3 sm:grid-cols-2">
+              <div
+                key={i}
+                className="grid gap-2 rounded-xl border border-white/8 bg-white/5 p-3 sm:grid-cols-2"
+              >
                 <div>
                   <div className="text-[10px] uppercase tracking-widest text-accent">Challenge</div>
                   <div className="mt-1 text-sm">{c.challenge}</div>
