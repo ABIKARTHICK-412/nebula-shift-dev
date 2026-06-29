@@ -1,99 +1,125 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { Sparkles, Play, ArrowRight, ExternalLink } from "lucide-react";
+import { Play, Github, ArrowRight, Trophy } from "lucide-react";
 import { portfolio } from "@/data/portfolio";
 import type { ViewerRole } from "@/data/portfolio";
 
 export function FeaturedSpotlight({ role }: { role: ViewerRole }) {
   const id = role.featuredProjectId ?? portfolio.featuredProjectId;
-  const project = portfolio.projects.find((p) => p.id === id) ?? portfolio.projects[0]!;
+  const project =
+    portfolio.projects.find((p) => p.id === id) ?? portfolio.projects[0]!;
+  const isGameJam = project.tags.includes("game-jam");
 
   return (
-    <section className="mx-auto mt-4 max-w-6xl px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
+    <section id="featured" className="mx-auto mt-6 max-w-7xl px-4 sm:px-6">
+      <div className="mb-5">
+        <div className="font-display text-[11px] font-semibold uppercase tracking-[0.25em] text-primary">
+          Featured Game
+        </div>
+        <h2 className="mt-1 font-display text-2xl font-bold sm:text-3xl">
+          Now Playing
+        </h2>
+      </div>
+
+      <motion.article
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6 }}
-        className="glass-strong relative overflow-hidden rounded-3xl p-6 sm:p-8"
+        transition={{ duration: 0.5 }}
+        className="card-lift overflow-hidden rounded-sm border border-white/8 bg-[#1B2838] shadow-lg shadow-black/40"
       >
-        <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 -left-10 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
-
-        <div className="grid items-center gap-6 lg:grid-cols-[1.2fr_1fr]">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[11px] uppercase tracking-[0.25em] text-primary">
-              <Sparkles className="h-3 w-3" /> Current Featured Project
+        <div className="grid lg:grid-cols-[7fr_3fr]">
+          {/* Cover */}
+          <div className="group relative aspect-[16/9] overflow-hidden border-b border-white/5 lg:border-b-0 lg:border-r">
+            <div className="cover-img absolute inset-0 bg-gradient-to-br from-[#2A475E] via-[#1B2838] to-[#0E141B]" />
+            <div className="absolute inset-0 grid-bg opacity-40" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center">
+                <div className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-primary/20 backdrop-blur transition group-hover:scale-110">
+                  <Play className="h-8 w-8 text-primary" />
+                </div>
+                <div className="mt-4 font-display text-3xl font-extrabold tracking-tight text-foreground/80 sm:text-4xl">
+                  {project.title}
+                </div>
+                <div className="mt-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  {project.metrics.engine} · {project.metrics.platform}
+                </div>
+              </div>
             </div>
-            <h2 className="mt-3 font-display text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
-              <span className="text-gradient">{project.title}</span>
-            </h2>
-            <p className="mt-1 font-display text-base text-foreground/80">{project.category}</p>
-            <p className="mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
+            {isGameJam ? (
+              <div className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-sm border border-amber-400/40 bg-amber-400/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-amber-200">
+                <Trophy className="h-3 w-3" /> Game Jam
+              </div>
+            ) : null}
+          </div>
+
+          {/* Info */}
+          <div className="flex flex-col p-5 sm:p-6">
+            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+              {project.category}
+            </div>
+            <h3 className="mt-1 font-display text-2xl font-bold sm:text-3xl">
+              {project.title}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               {project.description}
             </p>
 
-            <div className="mt-4 grid gap-2 sm:grid-cols-2">
-              <ImpactRow label="Problem" text={project.projectImpact.problem} />
-              <ImpactRow label="Solution" text={project.projectImpact.solution} />
-            </div>
+            <dl className="mt-4 grid grid-cols-2 gap-2 text-[11px]">
+              <KV k="Engine" v={project.metrics.engine} />
+              <KV k="Platform" v={project.metrics.platform} />
+              <KV k="Language" v={project.metrics.language} />
+              <KV k="Dev Time" v={project.metrics.devTime} />
+              <KV k="Status" v={project.metrics.status} />
+              <KV k="Team" v={project.metrics.teamSize} />
+            </dl>
 
-            <div className="mt-5 flex flex-wrap gap-2">
-              {project.links.itch ? (
-                <a
-                  href={project.links.itch}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="animate-pulse-glow inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground"
+            <div className="mt-auto pt-5">
+              <div className="flex flex-wrap gap-2">
+                {project.links.itch ? (
+                  <a
+                    href={project.links.itch}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-steam inline-flex items-center gap-2 rounded-sm px-4 py-2 text-xs font-semibold uppercase tracking-wider"
+                  >
+                    <Play className="h-3.5 w-3.5" /> Play Now
+                  </a>
+                ) : null}
+                {project.links.github ? (
+                  <a
+                    href={project.links.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn-ghost-steam inline-flex items-center gap-2 rounded-sm px-4 py-2 text-xs font-semibold uppercase tracking-wider"
+                  >
+                    <Github className="h-3.5 w-3.5" /> GitHub
+                  </a>
+                ) : null}
+                <Link
+                  to={`/projects/${project.id}`}
+                  className="btn-ghost-steam inline-flex items-center gap-2 rounded-sm px-4 py-2 text-xs font-semibold uppercase tracking-wider"
                 >
-                  <Play className="h-4 w-4" /> Play Now
-                </a>
-              ) : null}
-              <Link
-                to={`/projects/${project.id}`}
-                className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-foreground hover:bg-white/10"
-              >
-                View Project <ArrowRight className="h-4 w-4" />
-              </Link>
-              {project.links.github ? (
-                <a
-                  href={project.links.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-foreground hover:bg-white/10"
-                >
-                  <ExternalLink className="h-4 w-4" /> GitHub
-                </a>
-              ) : null}
-            </div>
-          </div>
-
-          <div className="glass relative aspect-video overflow-hidden rounded-2xl border-white/10">
-            <div className="absolute inset-0 grid-bg opacity-60" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div className="mx-auto mb-2 grid h-16 w-16 animate-float place-items-center rounded-2xl bg-primary/20 neon-border">
-                  <Play className="h-7 w-7 text-primary" />
-                </div>
-                <div className="font-display text-xs uppercase tracking-[0.25em] text-muted-foreground">
-                  {project.metrics.engine} • {project.metrics.devTime}
-                </div>
-                <div className="font-display text-lg font-semibold">{project.metrics.type}</div>
+                  Case Study <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
               </div>
             </div>
-            <div className="scanlines" />
           </div>
         </div>
-      </motion.div>
+      </motion.article>
     </section>
   );
 }
 
-function ImpactRow({ label, text }: { label: string; text: string }) {
+function KV({ k, v }: { k: string; v: string }) {
   return (
-    <div className="rounded-xl border border-white/8 bg-white/5 p-3">
-      <div className="text-[10px] uppercase tracking-widest text-primary">{label}</div>
-      <div className="mt-1 text-sm text-foreground/90">{text}</div>
+    <div className="rounded-sm border border-white/5 bg-[#2A475E]/40 px-2.5 py-1.5">
+      <dt className="text-[9px] uppercase tracking-widest text-muted-foreground">
+        {k}
+      </dt>
+      <dd className="mt-0.5 font-display text-xs font-semibold text-foreground">
+        {v}
+      </dd>
     </div>
   );
 }

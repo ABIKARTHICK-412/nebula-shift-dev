@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { portfolio } from "@/data/portfolio";
 import type { ViewerRole } from "@/data/portfolio";
 
@@ -10,31 +9,24 @@ export function RoleSwitcher({
   onChange: (id: string) => void;
 }) {
   return (
-    <div className="mx-auto mt-24 max-w-6xl px-4">
-      <div className="glass flex flex-col items-center gap-3 rounded-2xl p-3 sm:flex-row sm:justify-between">
-        <span className="font-display text-xs uppercase tracking-[0.2em] text-muted-foreground">
+    <div className="mx-auto mt-6 max-w-7xl px-4 sm:px-6">
+      <div className="flex flex-col items-start gap-3 rounded-sm border border-white/8 bg-[#1B2838] px-4 py-2.5 sm:flex-row sm:items-center sm:justify-between">
+        <span className="font-display text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
           Viewing as
         </span>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1">
           {portfolio.viewerRoles.map((r) => {
             const isActive = r.id === active.id;
             return (
               <button
                 key={r.id}
                 onClick={() => onChange(r.id)}
-                className={`relative rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
+                className={`rounded-sm border px-3 py-1.5 text-[11px] font-semibold uppercase tracking-wider transition ${
                   isActive
-                    ? "text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "border-primary/40 bg-primary/15 text-primary"
+                    : "border-transparent text-muted-foreground hover:bg-white/5 hover:text-foreground"
                 }`}
               >
-                {isActive ? (
-                  <motion.span
-                    layoutId="role-pill"
-                    className="absolute inset-0 -z-10 rounded-lg bg-primary shadow-lg shadow-primary/40"
-                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                  />
-                ) : null}
                 {r.label}
               </button>
             );

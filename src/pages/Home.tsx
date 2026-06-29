@@ -5,16 +5,12 @@ import { FeaturedSpotlight } from "@/components/portfolio/featured-spotlight";
 import { Projects } from "@/components/portfolio/projects";
 import {
   About,
-  CurrentlyBuilding,
-  Showcase,
   Skills,
-  Learning,
-  Process,
   GithubBlock,
-  CareerInterests,
   Contact,
   Footer,
   LoadingScreen,
+  RecentlyDeveloped,
 } from "@/components/portfolio/sections";
 import { useViewerRole } from "@/hooks/use-viewer-role";
 import { portfolio } from "@/data/portfolio";
@@ -58,18 +54,14 @@ export default function Home() {
       <LoadingScreen />
       <Nav role={role} />
       <main>
-        <RoleSwitcher active={role} onChange={setRole} />
         <Hero role={role} />
+        <RoleSwitcher active={role} onChange={setRole} />
         <FeaturedSpotlight role={role} />
-        <About />
-        <CurrentlyBuilding />
+        <RecentlyDeveloped />
         <Projects role={role} />
-        <Showcase />
         <Skills role={role} />
-        <Learning />
-        <Process />
+        <About />
         <GithubBlock />
-        <CareerInterests />
         <Contact />
       </main>
       <Footer />
