@@ -295,4 +295,32 @@
     background: rgba(255, 255, 255, 0.08);
     border-radius: 4px;
   }
+
+  /* Section background image system — visible image with a light blur and tinted overlay */
+  .section-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -10;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .section-bg::before {
+    content: "";
+    position: absolute;
+    inset: -2%;
+    background-image: var(--section-bg-image);
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px) saturate(1.05);
+    opacity: 0.55;
+    transform: scale(1.04);
+  }
+  .section-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(120% 80% at 50% 0%, transparent 0%, var(--section-overlay) 70%),
+      linear-gradient(180deg, var(--section-overlay) 0%, var(--background) 100%);
+  }
 }
