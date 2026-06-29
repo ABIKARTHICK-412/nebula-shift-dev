@@ -43,15 +43,15 @@ export default function ProjectDetail() {
       {/* Storefront sub-banner */}
       <section className="relative isolate overflow-hidden border-b border-white/5">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#2A475E] via-[#1B2838] to-[#171A21]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#32353D] via-[#2B2E35] to-[#1B1B1F]" />
           <div className="absolute inset-0 grid-bg opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#171A21] to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1B1B1F] to-transparent" />
         </div>
 
         <div className="mx-auto max-w-7xl px-4 pb-10 pt-28 sm:px-6 sm:pt-32">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground hover:text-primary"
+            className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground hover:text-accent"
           >
             <ArrowLeft className="h-3 w-3" /> Back to Library
           </Link>
@@ -109,7 +109,7 @@ export default function ProjectDetail() {
             {Object.entries(project.metrics).map(([k, v]) => (
               <div
                 key={k}
-                className="rounded-sm border border-white/5 bg-[#2A475E]/40 p-3"
+                className="rounded-sm border border-white/5 bg-[#32353D]/40 p-3"
               >
                 <dt className="text-[10px] uppercase tracking-widest text-muted-foreground">
                   {k}
@@ -152,7 +152,7 @@ export default function ProjectDetail() {
             {project.challenges.map((c, i) => (
               <div
                 key={i}
-                className="grid gap-3 rounded-sm border border-white/5 bg-[#2A475E]/40 p-3 sm:grid-cols-2"
+                className="grid gap-3 rounded-sm border border-white/5 bg-[#32353D]/40 p-3 sm:grid-cols-2"
               >
                 <div>
                   <div className="text-[10px] uppercase tracking-widest text-accent">
@@ -176,7 +176,7 @@ export default function ProjectDetail() {
             {project.learnings.map((l) => (
               <span
                 key={l}
-                className="rounded-sm border border-white/8 bg-[#2A475E]/40 px-2.5 py-1 text-[11px] text-foreground/90"
+                className="rounded-sm border border-white/8 bg-[#32353D]/40 px-2.5 py-1 text-[11px] text-foreground/90"
               >
                 {l}
               </span>
@@ -185,7 +185,7 @@ export default function ProjectDetail() {
         </Card>
 
         {project.links.itchEmbedUrl ? (
-          <div className="overflow-hidden rounded-sm border border-white/8 bg-[#1B2838]">
+          <div className="overflow-hidden rounded-sm border border-white/8 bg-[#2B2E35]">
             <div className="border-b border-white/5 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-primary">
               Play Embedded
             </div>
@@ -230,7 +230,7 @@ function Card({
   children: React.ReactNode;
 }) {
   return (
-    <section className="rounded-sm border border-white/8 bg-[#1B2838] p-5">
+    <section className="rounded-sm border border-white/8 bg-[#2B2E35] p-5">
       <div className="mb-4 flex items-center gap-2 border-b border-white/5 pb-3">
         <span className="grid h-7 w-7 place-items-center rounded-sm bg-primary/15 text-primary">
           {icon}
@@ -246,7 +246,7 @@ function Card({
 
 function Block({ label, text }: { label: string; text: string }) {
   return (
-    <div className="rounded-sm border border-white/5 bg-[#2A475E]/40 p-3">
+    <div className="rounded-sm border border-white/5 bg-[#32353D]/40 p-3">
       <div className="text-[10px] uppercase tracking-widest text-primary">
         {label}
       </div>

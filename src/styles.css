@@ -9,7 +9,7 @@
    ───────────────────────────────────────────────────────────────────────── */
 
 @theme inline {
-  --font-display: "Manrope", "Inter", system-ui, sans-serif;
+  --font-display: "Sora", "Inter", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -41,43 +41,43 @@
 
 :root,
 [data-theme="steam"] {
-  --radius: 0.375rem;
+  --radius: 0.5rem;
 
-  --background: #171A21;
+  --background: #1B1B1F;
   --foreground: #FFFFFF;
 
-  --surface: #1B2838;
-  --surface-2: #2A475E;
-  --card-hover: #335A7F;
+  --surface: #23252B;
+  --surface-2: #2B2E35;
+  --card-hover: #32353D;
 
-  --card: #1B2838;
+  --card: #2B2E35;
   --card-foreground: #FFFFFF;
-  --popover: #1B2838;
+  --popover: #23252B;
   --popover-foreground: #FFFFFF;
 
-  --primary: #66C0F4;
-  --primary-foreground: #0E141B;
-  --primary-gradient-from: #67C1F5;
-  --primary-gradient-to: #417A9B;
-  --secondary: #2A475E;
+  --primary: #7C8A99;
+  --primary-foreground: #FFFFFF;
+  --primary-gradient-from: #8B98A6;
+  --primary-gradient-to: #5E6B7A;
+  --secondary: #2B2E35;
   --secondary-foreground: #FFFFFF;
-  --muted: #2A475E;
-  --muted-foreground: #C7D5E0;
-  --accent: #A4D7F5;
-  --accent-foreground: #0E141B;
+  --muted: #2B2E35;
+  --muted-foreground: #B9BDC5;
+  --accent: #4CD18C;
+  --accent-foreground: #0E1A12;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
 
   --border: rgba(255, 255, 255, 0.06);
   --input: rgba(255, 255, 255, 0.08);
-  --ring: #66C0F4;
+  --ring: #4CD18C;
 
-  --nav-bg: rgba(23, 26, 33, 0.95);
+  --nav-bg: rgba(27, 27, 31, 0.92);
   --hairline: rgba(255, 255, 255, 0.06);
-  --hairline-strong: rgba(255, 255, 255, 0.08);
-  --grid-line: rgba(255, 255, 255, 0.02);
-  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.35);
-  --shadow-elevated: 0 14px 28px -14px rgba(0, 0, 0, 0.7);
+  --hairline-strong: rgba(255, 255, 255, 0.10);
+  --grid-line: rgba(255, 255, 255, 0.025);
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 18px 40px -18px rgba(0, 0, 0, 0.8);
   color-scheme: dark;
 }
 
@@ -318,25 +318,33 @@
     transform: scale(1.05);
   }
 
-  /* Themed CTA */
+  /* Themed CTA — solid charcoal with green accent on hover */
   .btn-steam {
-    background: linear-gradient(180deg, var(--primary-gradient-from) 0%, var(--primary-gradient-to) 100%);
-    color: var(--primary-foreground);
+    background: var(--surface-2);
+    color: var(--foreground);
     border: 1px solid var(--hairline-strong);
-    transition: filter 150ms ease, transform 150ms ease;
+    transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease;
   }
-  .btn-steam:hover { filter: brightness(1.08); }
-  .btn-steam:active { transform: translateY(1px); }
+  .btn-steam:hover {
+    background: var(--card-hover);
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+    color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+  }
+  .btn-steam:active { transform: translateY(0); }
 
   .btn-ghost-steam {
-    background: color-mix(in srgb, var(--primary) 8%, transparent);
+    background: transparent;
     color: var(--muted-foreground);
-    border: 1px solid color-mix(in srgb, var(--primary) 20%, transparent);
-    transition: background-color 150ms ease, color 150ms ease;
+    border: 1px solid var(--hairline-strong);
+    transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, transform 150ms ease;
   }
   .btn-ghost-steam:hover {
-    background: color-mix(in srgb, var(--primary) 16%, transparent);
-    color: var(--foreground);
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+    transform: translateY(-2px);
   }
 
   .bg-nav { background-color: var(--nav-bg); }

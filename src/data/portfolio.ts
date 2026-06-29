@@ -65,15 +65,6 @@ export interface GameplayMechanic {
   sourceUrl?: string;
 }
 
-export interface BackgroundImages {
-  hero: string;
-  projects: string;
-  mechanics: string;
-  skills: string;
-  about: string;
-  activity: string;
-  contact: string;
-}
 
 export interface SkillGroup {
   id: string;
@@ -140,7 +131,7 @@ export interface PortfolioConfig {
   github: { username: string };
   about: { bio: string; education: { degree: string; school: string; detail?: string }[] };
   gameplayMechanics: GameplayMechanic[];
-  backgrounds: BackgroundImages;
+  
 }
 
 export const portfolio: PortfolioConfig = {
@@ -486,16 +477,6 @@ export const portfolio: PortfolioConfig = {
         detail: "CGPA: 8.1",
       },
     ],
-  },
-  // ── Background images (placeholders — drop files into public/bg/) ──────────
-  backgrounds: {
-    hero: "/bg/hero.jpg",
-    projects: "/bg/projects.jpg",
-    mechanics: "/bg/mechanics.jpg",
-    skills: "/bg/skills.jpg",
-    about: "/bg/about.jpg",
-    activity: "/bg/activity.jpg",
-    contact: "/bg/contact.jpg",
   },
   // ── Gameplay mechanics carousel (data-driven; add more by appending) ───────
   gameplayMechanics: [

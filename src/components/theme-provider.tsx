@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from "
 export type ThemeId = "steam" | "light" | "midnight" | "synthwave" | "forest";
 
 export const THEMES: { id: ThemeId; label: string; swatch: string[] }[] = [
-  { id: "steam", label: "Steam Dark", swatch: ["#171A21", "#1B2838", "#66C0F4"] },
+  { id: "steam", label: "Studio Dark", swatch: ["#1B1B1F", "#2B2E35", "#4CD18C"] },
   { id: "light", label: "Daylight", swatch: ["#F2F4F8", "#FFFFFF", "#1A6FB5"] },
   { id: "midnight", label: "Midnight", swatch: ["#0B0B1A", "#1F1F3D", "#A78BFA"] },
   { id: "synthwave", label: "Synthwave", swatch: ["#1A0B2E", "#34195C", "#FF2A8A"] },

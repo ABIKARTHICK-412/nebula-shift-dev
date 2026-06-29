@@ -25,12 +25,12 @@ export function FeaturedSpotlight() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5 }}
-        className="card-lift overflow-hidden rounded-sm border border-white/8 bg-[#1B2838] shadow-lg shadow-black/40"
+        className="card-lift overflow-hidden rounded-sm border border-white/8 bg-[#2B2E35] shadow-lg shadow-black/40"
       >
         <div className="grid lg:grid-cols-[7fr_3fr]">
           {/* Cover */}
           <div className="group relative aspect-[16/9] overflow-hidden border-b border-white/5 lg:border-b-0 lg:border-r">
-            <div className="cover-img absolute inset-0 bg-gradient-to-br from-[#2A475E] via-[#1B2838] to-[#0E141B]" />
+            <div className="cover-img absolute inset-0 bg-gradient-to-br from-[#32353D] via-[#2B2E35] to-[#1B1B1F]" />
             <div className="absolute inset-0 grid-bg opacity-40" />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center">
@@ -112,7 +112,7 @@ export function FeaturedSpotlight() {
 
 function KV({ k, v }: { k: string; v: string }) {
   return (
-    <div className="rounded-sm border border-white/5 bg-[#2A475E]/40 px-2.5 py-1.5">
+    <div className="rounded-sm border border-white/5 bg-[#32353D]/40 px-2.5 py-1.5">
       <dt className="text-[9px] uppercase tracking-widest text-muted-foreground">
         {k}
       </dt>

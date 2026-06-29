@@ -18,13 +18,6 @@ export function GameplayMechanics() {
       id="mechanics"
       className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-[0.07] blur-2xl"
-        style={{
-          backgroundImage: `url(${asset(portfolio.backgrounds.mechanics)})`,
-        }}
-      />
       <div className="mb-5 flex items-end justify-between">
         <SectionHead
           eyebrow="Systems"
@@ -35,14 +28,14 @@ export function GameplayMechanics() {
           <button
             aria-label="Scroll left"
             onClick={() => scroll(-1)}
-            className="grid h-9 w-9 place-items-center rounded-sm border border-white/8 bg-[#1B2838] text-muted-foreground hover:text-primary"
+            className="grid h-9 w-9 place-items-center rounded-sm border border-white/8 bg-[#2B2E35] text-muted-foreground hover:text-accent"
           >
             <Icons.ChevronLeft className="h-4 w-4" />
           </button>
           <button
             aria-label="Scroll right"
             onClick={() => scroll(1)}
-            className="grid h-9 w-9 place-items-center rounded-sm border border-white/8 bg-[#1B2838] text-muted-foreground hover:text-primary"
+            className="grid h-9 w-9 place-items-center rounded-sm border border-white/8 bg-[#2B2E35] text-muted-foreground hover:text-accent"
           >
             <Icons.ChevronRight className="h-4 w-4" />
           </button>
@@ -69,10 +62,10 @@ function MechanicCard({ mechanic: m }: { mechanic: GameplayMechanic }) {
     m.difficulty || m.engineVersion || m.category || m.docsUrl || m.articleUrl || m.sourceUrl;
 
   return (
-    <article className="card-lift cover-zoom group relative flex h-[320px] w-[320px] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-white/8 bg-[#1B2838]">
+    <article className="card-lift cover-zoom group relative flex h-[320px] w-[320px] shrink-0 snap-start flex-col overflow-hidden rounded-sm border border-white/8 bg-[#2B2E35]">
       {/* Cover */}
       <div className="relative h-[160px] overflow-hidden border-b border-white/5">
-        <div className="cover-img absolute inset-0 bg-gradient-to-br from-[#2A475E] via-[#1B2838] to-[#0E141B]" />
+        <div className="cover-img absolute inset-0 bg-gradient-to-br from-[#32353D] via-[#2B2E35] to-[#1B1B1F]" />
         <div className="absolute inset-0 grid-bg opacity-30" />
         {previewVideo ? (
           <video
@@ -184,7 +177,7 @@ function MechanicCard({ mechanic: m }: { mechanic: GameplayMechanic }) {
 
 function MiniChip({ children }: { children: React.ReactNode }) {
   return (
-    <span className="rounded-sm border border-white/8 bg-[#2A475E]/50 px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wider text-foreground/85">
+    <span className="rounded-sm border border-white/8 bg-[#32353D]/50 px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wider text-foreground/85">
       {children}
     </span>
   );

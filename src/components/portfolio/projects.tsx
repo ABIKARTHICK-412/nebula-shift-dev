@@ -33,11 +33,6 @@ export function Projects() {
       id="library"
       className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-[0.07] blur-2xl"
-        style={{ backgroundImage: `url(${asset(portfolio.backgrounds.projects)})` }}
-      />
       <SectionHead
         eyebrow="Projects"
         title="Projects"
@@ -45,7 +40,7 @@ export function Projects() {
       />
 
       <div className="mt-5 flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center gap-1.5 rounded-sm border border-white/8 bg-[#2A475E]/40 px-2.5 py-1.5 text-[11px] uppercase tracking-widest text-muted-foreground">
+        <span className="inline-flex items-center gap-1.5 rounded-sm border border-white/8 bg-[#32353D]/40 px-2.5 py-1.5 text-[11px] uppercase tracking-widest text-muted-foreground">
           <Filter className="h-3.5 w-3.5" /> Tags
         </span>
         {portfolio.projectFilters.map((f) => {
@@ -84,7 +79,7 @@ export function Projects() {
             title="Unreal Engine Projects"
             projects={unrealGrouped}
             emptyState={
-              <div className="rounded-sm border border-white/8 bg-[#1B2838] p-6">
+              <div className="rounded-sm border border-white/8 bg-[#2B2E35] p-6">
                 <div className="flex items-start gap-3">
                   <span className="grid h-9 w-9 shrink-0 place-items-center rounded-sm bg-primary/15 text-primary">
                     <Rocket className="h-4 w-4" />
@@ -146,11 +141,11 @@ function ProjectCard({ project }: { project: Project }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 8 }}
       transition={{ duration: 0.3 }}
-      className="card-lift group flex flex-col overflow-hidden rounded-sm border border-white/8 bg-[#1B2838]"
+      className="card-lift group flex flex-col overflow-hidden rounded-sm border border-white/8 bg-[#2B2E35]"
     >
       {/* Steam capsule cover */}
       <div className="cover-zoom relative aspect-[460/215] overflow-hidden border-b border-white/5">
-        <div className="cover-img absolute inset-0 bg-gradient-to-br from-[#2A475E] via-[#1B2838] to-[#0E141B]" />
+        <div className="cover-img absolute inset-0 bg-gradient-to-br from-[#32353D] via-[#2B2E35] to-[#1B1B1F]" />
         <div className="absolute inset-0 grid-bg opacity-30" />
         {project.media?.banner ? (
           <img
@@ -235,7 +230,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 function Chip({ children }: { children: React.ReactNode }) {
   return (
-    <span className="rounded-sm border border-white/8 bg-[#2A475E]/50 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-foreground/85">
+    <span className="rounded-sm border border-white/8 bg-[#32353D]/50 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-foreground/85">
       {children}
     </span>
   );

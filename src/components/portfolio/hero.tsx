@@ -18,19 +18,12 @@ export function Hero() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "linear-gradient(135deg, #2A475E 0%, #1B2838 60%, #171A21 100%)",
-          }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-[0.07] blur-2xl"
-          style={{
-            backgroundImage: `url(${asset(portfolio.backgrounds.hero)})`,
+              "linear-gradient(135deg, #32353D 0%, #2B2E35 60%, #1B1B1F 100%)",
           }}
         />
         <div className="absolute inset-0 grid-bg opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#171A21] via-[#171A21]/85 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#171A21] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1B1B1F] via-[#1B1B1F]/85 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#1B1B1F] to-transparent" />
       </div>
 
       <div className="mx-auto grid min-h-[88vh] max-w-7xl items-end gap-8 px-4 pb-12 pt-32 sm:px-6 lg:min-h-[92vh] lg:grid-cols-[1.4fr_1fr] lg:pb-20">

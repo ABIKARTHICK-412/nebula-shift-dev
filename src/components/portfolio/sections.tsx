@@ -24,7 +24,7 @@ export function RecentlyDeveloped() {
     (p) => p.metrics.status === "Completed",
   );
   return (
-    <div className="rounded-sm border border-white/8 bg-[#1B2838]/80 backdrop-blur-sm">
+    <div className="rounded-sm border border-white/8 bg-[#2B2E35]/80 backdrop-blur-sm">
       <div className="flex items-center justify-between border-b border-white/8 px-4 py-3">
         <div className="font-display text-[11px] font-semibold uppercase tracking-[0.25em] text-primary">
           Released Games
@@ -39,9 +39,9 @@ export function RecentlyDeveloped() {
             <li key={p.id}>
               <a
                 href="#library"
-                className="card-lift group flex items-center gap-3 rounded-sm border border-transparent bg-[#2A475E]/30 p-2 hover:border-primary/30 hover:bg-[#2A475E]/60"
+                className="card-lift group flex items-center gap-3 rounded-sm border border-transparent bg-[#32353D]/30 p-2 hover:border-primary/30 hover:bg-[#32353D]/60"
               >
-                <div className="relative h-12 w-20 shrink-0 overflow-hidden rounded-sm border border-white/8 bg-gradient-to-br from-[#2A475E] via-[#1B2838] to-[#0E141B]">
+                <div className="relative h-12 w-20 shrink-0 overflow-hidden rounded-sm border border-white/8 bg-gradient-to-br from-[#32353D] via-[#2B2E35] to-[#1B1B1F]">
                   <div className="absolute inset-0 grid-bg opacity-30" />
                   {p.media?.banner ? (
                     <img
@@ -67,7 +67,7 @@ export function RecentlyDeveloped() {
                     {p.metrics.engine} · {p.category}
                   </div>
                 </div>
-                <Icons.ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition group-hover:text-primary" />
+                <Icons.ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition group-hover:text-accent" />
               </a>
             </li>
           ))}
@@ -85,11 +85,6 @@ export function Skills() {
       id="toolkit"
       className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-[0.07] blur-2xl"
-        style={{ backgroundImage: `url(${asset(portfolio.backgrounds.skills)})` }}
-      />
       <SectionHead eyebrow="Skills" title="Technical Skills" />
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {portfolio.skillGroups.map((g) => {
@@ -97,7 +92,7 @@ export function Skills() {
           return (
             <div
               key={g.id}
-              className="card-lift rounded-sm border border-white/8 bg-[#1B2838] p-5"
+              className="card-lift rounded-sm border border-white/8 bg-[#2B2E35] p-5"
             >
               <div className="flex items-center gap-2.5">
                 <span className="grid h-9 w-9 place-items-center rounded-sm bg-primary/15 text-primary">
@@ -111,7 +106,7 @@ export function Skills() {
                 {g.items.map((s) => (
                   <span
                     key={s.name}
-                    className="rounded-sm border border-white/8 bg-[#2A475E]/50 px-2.5 py-1 text-[11px] font-medium text-foreground/90"
+                    className="rounded-sm border border-white/8 bg-[#32353D]/50 px-2.5 py-1 text-[11px] font-medium text-foreground/90"
                   >
                     {s.name}
                   </span>
@@ -133,16 +128,11 @@ export function About() {
       id="about"
       className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-[0.07] blur-2xl"
-        style={{ backgroundImage: `url(${asset(portfolio.backgrounds.about)})` }}
-      />
       <SectionHead eyebrow="Developer Profile" title="About The Developer" />
       <div className="mt-6 grid gap-5 lg:grid-cols-[300px_1fr]">
         {/* Profile card */}
-        <div className="rounded-sm border border-white/8 bg-[#1B2838] p-5">
-          <div className="mx-auto grid h-28 w-28 place-items-center overflow-hidden rounded-full border-2 border-primary/40 bg-[#2A475E]">
+        <div className="rounded-sm border border-white/8 bg-[#2B2E35] p-5">
+          <div className="mx-auto grid h-28 w-28 place-items-center overflow-hidden rounded-full border-2 border-primary/40 bg-[#32353D]">
             <img
               src={asset(portfolio.profile.photo)}
               alt={portfolio.profile.name}
@@ -190,7 +180,7 @@ export function About() {
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"
-              className="grid h-8 w-8 place-items-center rounded-sm border border-white/8 bg-white/5 text-foreground/80 hover:text-primary"
+              className="grid h-8 w-8 place-items-center rounded-sm border border-white/8 bg-white/5 text-foreground/80 hover:text-accent"
             >
               <Icons.Github className="h-4 w-4" />
             </a>
@@ -199,14 +189,14 @@ export function About() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
-              className="grid h-8 w-8 place-items-center rounded-sm border border-white/8 bg-white/5 text-foreground/80 hover:text-primary"
+              className="grid h-8 w-8 place-items-center rounded-sm border border-white/8 bg-white/5 text-foreground/80 hover:text-accent"
             >
               <Icons.Linkedin className="h-4 w-4" />
             </a>
             <a
               href={`mailto:${portfolio.profile.email}`}
               aria-label="Email"
-              className="grid h-8 w-8 place-items-center rounded-sm border border-white/8 bg-white/5 text-foreground/80 hover:text-primary"
+              className="grid h-8 w-8 place-items-center rounded-sm border border-white/8 bg-white/5 text-foreground/80 hover:text-accent"
             >
               <Icons.Mail className="h-4 w-4" />
             </a>
@@ -230,7 +220,7 @@ export function About() {
                 {portfolio.about.education.map((e) => (
                   <div
                     key={e.degree}
-                    className="rounded-sm border border-white/5 bg-[#2A475E]/40 p-2.5"
+                    className="rounded-sm border border-white/5 bg-[#32353D]/40 p-2.5"
                   >
                     <div className="font-display text-xs font-semibold text-foreground">
                       {e.degree}
@@ -293,7 +283,7 @@ export function About() {
               {portfolio.timeline.map((t) => (
                 <div
                   key={t.year}
-                  className="rounded-sm border border-white/5 bg-[#2A475E]/40 p-2.5"
+                  className="rounded-sm border border-white/5 bg-[#32353D]/40 p-2.5"
                 >
                   <div className="font-display text-xs font-bold text-primary">
                     {t.year}
@@ -333,7 +323,7 @@ function InfoCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-sm border border-white/8 bg-[#1B2838] p-4 sm:p-5">
+    <div className="rounded-sm border border-white/8 bg-[#2B2E35] p-4 sm:p-5">
       <div className="mb-3 flex items-center gap-2">
         <span className="grid h-7 w-7 place-items-center rounded-sm bg-primary/15 text-primary">
           {icon}
@@ -371,11 +361,6 @@ export function GithubBlock() {
       id="activity"
       className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-[0.07] blur-2xl"
-        style={{ backgroundImage: `url(${asset(portfolio.backgrounds.activity)})` }}
-      />
       <SectionHead
         eyebrow="Development Activity"
         title={`@${portfolio.github.username}`}
@@ -383,7 +368,7 @@ export function GithubBlock() {
 
       <div className="mt-6 space-y-4">
         {q.isLoading ? (
-          <div className="rounded-sm border border-white/8 bg-[#1B2838] p-5 text-sm text-muted-foreground">
+          <div className="rounded-sm border border-white/8 bg-[#2B2E35] p-5 text-sm text-muted-foreground">
             Loading GitHub activity…
           </div>
         ) : q.data?.ok ? (
@@ -412,7 +397,7 @@ export function GithubBlock() {
             </div>
 
             <div className="grid gap-4 lg:grid-cols-[1fr_300px]">
-              <div className="rounded-sm border border-white/8 bg-[#1B2838] p-5">
+              <div className="rounded-sm border border-white/8 bg-[#2B2E35] p-5">
                 <h4 className="mb-3 font-display text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
                   Recent Projects
                 </h4>
@@ -423,7 +408,7 @@ export function GithubBlock() {
                       href={r.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="card-lift block rounded-sm border border-white/5 bg-[#2A475E]/40 p-3 hover:border-primary/30"
+                      className="card-lift block rounded-sm border border-white/5 bg-[#32353D]/40 p-3 hover:border-primary/30"
                     >
                       <div className="flex items-center justify-between">
                         <div className="font-display text-sm font-semibold text-foreground">
@@ -448,7 +433,7 @@ export function GithubBlock() {
                 </div>
               </div>
 
-              <div className="rounded-sm border border-white/8 bg-[#1B2838] p-5">
+              <div className="rounded-sm border border-white/8 bg-[#2B2E35] p-5">
                 <h4 className="mb-3 font-display text-xs font-bold uppercase tracking-[0.18em] text-muted-foreground">
                   Languages
                 </h4>
@@ -486,7 +471,7 @@ export function GithubBlock() {
             </div>
           </>
         ) : (
-          <div className="rounded-sm border border-white/8 bg-[#1B2838] p-5 text-sm text-muted-foreground">
+          <div className="rounded-sm border border-white/8 bg-[#2B2E35] p-5 text-sm text-muted-foreground">
             Live GitHub data unavailable right now. Visit{" "}
             <a
               className="text-primary underline"
@@ -512,7 +497,7 @@ function Widget({
   value: string;
 }) {
   return (
-    <div className="card-lift rounded-sm border border-white/8 bg-[#1B2838] p-4">
+    <div className="card-lift rounded-sm border border-white/8 bg-[#2B2E35] p-4">
       <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-muted-foreground">
         <span className="text-primary">{icon}</span> {label}
       </div>
@@ -587,11 +572,6 @@ export function Contact() {
       id="support"
       className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-[0.07] blur-2xl"
-        style={{ backgroundImage: `url(${asset(portfolio.backgrounds.contact)})` }}
-      />
       <SectionHead
         eyebrow="Get In Touch"
         title="Let's Build Something Together"
@@ -600,7 +580,7 @@ export function Contact() {
       <div className="mt-6 grid gap-5 lg:grid-cols-[1.2fr_1fr]">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-3 rounded-sm border border-white/8 bg-[#1B2838] p-5"
+          className="space-y-3 rounded-sm border border-white/8 bg-[#2B2E35] p-5"
           noValidate
         >
           <div className="mb-1 flex items-center gap-2 border-b border-white/5 pb-3">
@@ -640,7 +620,7 @@ export function Contact() {
               rows={6}
               maxLength={2000}
               {...register("message")}
-              className="mt-1.5 w-full rounded-sm border border-white/10 bg-[#0E141B] px-3 py-2.5 text-sm outline-none focus:border-primary"
+              className="mt-1.5 w-full rounded-sm border border-white/10 bg-[#1B1B1F] px-3 py-2.5 text-sm outline-none focus:border-primary"
             />
             {errors.message ? (
               <p className="mt-1 text-[11px] text-destructive">
@@ -666,7 +646,7 @@ export function Contact() {
         </form>
 
         <div className="space-y-4">
-          <div className="rounded-sm border border-white/8 bg-[#1B2838] p-5">
+          <div className="rounded-sm border border-white/8 bg-[#2B2E35] p-5">
             <div className="mb-3 flex items-center gap-2 border-b border-white/5 pb-3">
               <Icons.MessageSquare className="h-4 w-4 text-primary" />
               <span className="font-display text-xs font-bold uppercase tracking-[0.18em]">
@@ -675,14 +655,14 @@ export function Contact() {
             </div>
             <div className="space-y-2.5 text-sm">
               <a
-                className="flex items-center gap-2 hover:text-primary"
+                className="flex items-center gap-2 hover:text-accent"
                 href={`mailto:${portfolio.profile.email}`}
               >
                 <Icons.Mail className="h-4 w-4 text-primary" />{" "}
                 {portfolio.profile.email}
               </a>
               <a
-                className="flex items-center gap-2 hover:text-primary"
+                className="flex items-center gap-2 hover:text-accent"
                 href={portfolio.profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
@@ -690,7 +670,7 @@ export function Contact() {
                 <Icons.Linkedin className="h-4 w-4 text-primary" /> LinkedIn
               </a>
               <a
-                className="flex items-center gap-2 hover:text-primary"
+                className="flex items-center gap-2 hover:text-accent"
                 href={portfolio.profile.github}
                 target="_blank"
                 rel="noreferrer"
@@ -704,7 +684,7 @@ export function Contact() {
             </div>
           </div>
 
-          <div className="rounded-sm border border-white/8 bg-[#1B2838] p-5">
+          <div className="rounded-sm border border-white/8 bg-[#2B2E35] p-5">
             <div className="mb-3 flex items-center gap-2 border-b border-white/5 pb-3">
               <Icons.Download className="h-4 w-4 text-primary" />
               <span className="font-display text-xs font-bold uppercase tracking-[0.18em]">
@@ -714,7 +694,7 @@ export function Contact() {
             <a
               href={asset(portfolio.resume)}
               download
-              className="inline-flex w-full items-center justify-between rounded-sm border border-white/8 bg-[#2A475E]/40 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider hover:border-primary/30 hover:bg-[#2A475E]/70"
+              className="inline-flex w-full items-center justify-between rounded-sm border border-white/8 bg-[#32353D]/40 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider hover:border-primary/30 hover:bg-[#32353D]/70"
             >
               Download Resume
               <Icons.Download className="h-3.5 w-3.5 text-primary" />
@@ -743,7 +723,7 @@ const Field = React.forwardRef<HTMLInputElement, FieldProps>(function Field(
         ref={ref}
         type={type}
         {...rest}
-        className="mt-1.5 w-full rounded-sm border border-white/10 bg-[#0E141B] px-3 py-2 text-sm outline-none focus:border-primary"
+        className="mt-1.5 w-full rounded-sm border border-white/10 bg-[#1B1B1F] px-3 py-2 text-sm outline-none focus:border-primary"
       />
       {error ? (
         <p className="mt-1 text-[11px] text-destructive">{error}</p>
@@ -756,7 +736,7 @@ const Field = React.forwardRef<HTMLInputElement, FieldProps>(function Field(
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-white/5 bg-[#0E141B]">
+    <footer className="mt-24 border-t border-white/5 bg-[#1B1B1F]">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-6 sm:flex-row sm:px-6">
         <div className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} {portfolio.profile.name}
@@ -767,7 +747,7 @@ export function Footer() {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
-            className="grid h-8 w-8 place-items-center rounded-sm border border-white/8 bg-white/5 text-foreground/70 hover:text-primary"
+            className="grid h-8 w-8 place-items-center rounded-sm border border-white/8 bg-white/5 text-foreground/70 hover:text-accent"
           >
             <Icons.Github className="h-4 w-4" />
           </a>
@@ -776,14 +756,14 @@ export function Footer() {
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
-            className="grid h-8 w-8 place-items-center rounded-sm border border-white/8 bg-white/5 text-foreground/70 hover:text-primary"
+            className="grid h-8 w-8 place-items-center rounded-sm border border-white/8 bg-white/5 text-foreground/70 hover:text-accent"
           >
             <Icons.Linkedin className="h-4 w-4" />
           </a>
           <a
             href={`mailto:${portfolio.profile.email}`}
             aria-label="Email"
-            className="grid h-8 w-8 place-items-center rounded-sm border border-white/8 bg-white/5 text-foreground/70 hover:text-primary"
+            className="grid h-8 w-8 place-items-center rounded-sm border border-white/8 bg-white/5 text-foreground/70 hover:text-accent"
           >
             <Icons.Mail className="h-4 w-4" />
           </a>
@@ -813,7 +793,7 @@ export function LoadingScreen() {
   }, []);
   if (done) return null;
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#171A21]">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#1B1B1F]">
       <div className="w-[280px] text-center">
         <div className="font-display text-[11px] font-semibold uppercase tracking-[0.3em] text-primary">
           Loading Library…
@@ -838,7 +818,7 @@ export function CurrentlyBuilding() {
   const c = portfolio.currentlyBuilding;
   return (
     <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6">
-      <div className="rounded-sm border border-white/8 bg-[#1B2838] p-5">
+      <div className="rounded-sm border border-white/8 bg-[#2B2E35] p-5">
         <div className="font-display text-xs font-bold uppercase tracking-wider text-accent">
           Currently Building
         </div>
