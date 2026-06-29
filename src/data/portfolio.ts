@@ -38,6 +38,7 @@ export interface Project {
     github?: string;
     details?: string;
   };
+  media?: ProjectMedia;
 }
 
 export interface ProjectMedia {
@@ -138,6 +139,8 @@ export interface PortfolioConfig {
   timeline: { year: string; title: string; description: string }[];
   github: { username: string };
   about: { bio: string; education: { degree: string; school: string; detail?: string }[] };
+  gameplayMechanics: GameplayMechanic[];
+  backgrounds: BackgroundImages;
 }
 
 export const portfolio: PortfolioConfig = {
