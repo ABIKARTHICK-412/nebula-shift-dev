@@ -366,22 +366,22 @@ export function GithubBlock() {
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               <Widget
                 icon={<Icons.Database className="h-4 w-4" />}
-                label="Repositories"
+                label="Public Repositories"
                 value={String(q.data.publicRepos)}
               />
               <Widget
-                icon={<Icons.Users className="h-4 w-4" />}
-                label="Followers"
-                value={String(q.data.followers)}
+                icon={<Icons.Wrench className="h-4 w-4" />}
+                label="Currently Maintained"
+                value={String(q.data.recent.length)}
               />
               <Widget
-                icon={<Icons.Star className="h-4 w-4" />}
-                label="Total Stars"
-                value={String(q.data.stars)}
+                icon={<Icons.Code2 className="h-4 w-4" />}
+                label="Languages Used"
+                value={String(languages.length)}
               />
               <Widget
                 icon={<Icons.GitBranch className="h-4 w-4" />}
-                label="Recent"
+                label="Recent Development"
                 value={String(q.data.recent.length)}
               />
             </div>
@@ -560,9 +560,9 @@ export function Contact() {
   return (
     <section id="support" className="mx-auto mt-20 max-w-7xl px-4 sm:px-6">
       <SectionHead
-        eyebrow="Developer Support"
-        title="Submit A Request"
-        sub="Open a ticket to discuss roles, collaborations, or game projects."
+        eyebrow="Get In Touch"
+        title="Let's Build Something Together"
+        sub="Open a conversation about roles, collaborations, or game projects."
       />
       <div className="mt-6 grid gap-5 lg:grid-cols-[1.2fr_1fr]">
         <form
@@ -571,9 +571,9 @@ export function Contact() {
           noValidate
         >
           <div className="mb-1 flex items-center gap-2 border-b border-white/5 pb-3">
-            <Icons.LifeBuoy className="h-4 w-4 text-primary" />
+            <Icons.Mail className="h-4 w-4 text-primary" />
             <span className="font-display text-xs font-bold uppercase tracking-[0.18em]">
-              New Support Request
+              Send A Message
             </span>
           </div>
 
@@ -601,7 +601,7 @@ export function Contact() {
           />
           <div>
             <label className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-              Describe your request
+              Your message
             </label>
             <textarea
               rows={6}
@@ -626,7 +626,7 @@ export function Contact() {
               </>
             ) : (
               <>
-                <Icons.Send className="h-4 w-4" /> Submit Request
+                <Icons.Send className="h-4 w-4" /> Send Message
               </>
             )}
           </button>
@@ -675,29 +675,17 @@ export function Contact() {
             <div className="mb-3 flex items-center gap-2 border-b border-white/5 pb-3">
               <Icons.Download className="h-4 w-4 text-primary" />
               <span className="font-display text-xs font-bold uppercase tracking-[0.18em]">
-                Resume Variants
+                Resume
               </span>
             </div>
-            <div className="grid gap-2 sm:grid-cols-2">
-              {(
-                [
-                  ["unity", "Unity Resume"],
-                  ["unreal", "Unreal Resume"],
-                  ["gameplay", "Gameplay Resume"],
-                  ["software", "Software Resume"],
-                ] as const
-              ).map(([k, label]) => (
-                <a
-                  key={k}
-                  href={asset(portfolio.resumes[k])}
-                  download
-                  className="inline-flex items-center justify-between rounded-sm border border-white/8 bg-[#2A475E]/40 px-3 py-2 text-xs font-semibold uppercase tracking-wider hover:border-primary/30 hover:bg-[#2A475E]/70"
-                >
-                  {label}
-                  <Icons.Download className="h-3.5 w-3.5 text-primary" />
-                </a>
-              ))}
-            </div>
+            <a
+              href={asset(portfolio.resume)}
+              download
+              className="inline-flex w-full items-center justify-between rounded-sm border border-white/8 bg-[#2A475E]/40 px-3 py-2.5 text-xs font-semibold uppercase tracking-wider hover:border-primary/30 hover:bg-[#2A475E]/70"
+            >
+              Download Resume
+              <Icons.Download className="h-3.5 w-3.5 text-primary" />
+            </a>
           </div>
         </div>
       </div>

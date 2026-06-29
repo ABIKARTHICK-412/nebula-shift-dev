@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import { Nav } from "@/components/portfolio/nav";
 import { Footer } from "@/components/portfolio/sections";
-import { useViewerRole } from "@/hooks/use-viewer-role";
 import { portfolio } from "@/data/portfolio";
 import { siteConfig } from "@/config/site";
 import NotFound from "./NotFound";
@@ -21,7 +20,6 @@ import NotFound from "./NotFound";
 export default function ProjectDetail() {
   const { id } = useParams<{ id: string }>();
   const project = portfolio.projects.find((p) => p.id === id);
-  const [role] = useViewerRole();
 
   if (!project) return <NotFound />;
 
@@ -40,7 +38,7 @@ export default function ProjectDetail() {
         <meta property="og:url" content={url} />
         <meta property="og:type" content="article" />
       </Helmet>
-      <Nav role={role} />
+      <Nav />
 
       {/* Storefront sub-banner */}
       <section className="relative isolate overflow-hidden border-b border-white/5">
