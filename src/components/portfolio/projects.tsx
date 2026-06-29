@@ -31,7 +31,7 @@ export function Projects() {
   return (
     <section
       id="library"
-      className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
+      className="relative isolate mx-auto mt-20 max-w-7xl scroll-mt-20 overflow-hidden px-4 sm:px-6"
     >
       <div
         className="section-bg"
