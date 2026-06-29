@@ -33,11 +33,16 @@ export function Projects() {
       id="library"
       className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
     >
+      <div
+        className="section-bg"
+        style={{ ['--section-bg-image' as never]: `url(${asset('bg/projects.jpg')})` }}
+      />
       <SectionHead
         eyebrow="Projects"
         title="Projects"
         sub="Every title is playable, scoped, and shipped. Filter by engine or status."
       />
+
 
       <div className="mt-5 flex flex-wrap items-center gap-2">
         <span className="inline-flex items-center gap-1.5 rounded-sm border border-white/8 bg-[#32353D]/40 px-2.5 py-1.5 text-[11px] uppercase tracking-widest text-muted-foreground">

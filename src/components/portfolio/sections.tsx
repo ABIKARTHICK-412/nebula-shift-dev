@@ -85,7 +85,12 @@ export function Skills() {
       id="toolkit"
       className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
     >
+      <div
+        className="section-bg"
+        style={{ ['--section-bg-image' as never]: `url(${asset('bg/skills.jpg')})` }}
+      />
       <SectionHead eyebrow="Skills" title="Technical Skills" />
+
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {portfolio.skillGroups.map((g) => {
           const Icon = lucide[g.icon] ?? Icons.Sparkles;
@@ -128,7 +133,12 @@ export function About() {
       id="about"
       className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
     >
+      <div
+        className="section-bg"
+        style={{ ['--section-bg-image' as never]: `url(${asset('bg/about.jpg')})` }}
+      />
       <SectionHead eyebrow="Developer Profile" title="About The Developer" />
+
       <div className="mt-6 grid gap-5 lg:grid-cols-[300px_1fr]">
         {/* Profile card */}
         <div className="rounded-sm border border-white/8 bg-[#2B2E35] p-5">
@@ -361,10 +371,15 @@ export function GithubBlock() {
       id="activity"
       className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
     >
+      <div
+        className="section-bg"
+        style={{ ['--section-bg-image' as never]: `url(${asset('bg/activity.jpg')})` }}
+      />
       <SectionHead
         eyebrow="Development Activity"
         title={`@${portfolio.github.username}`}
       />
+
 
       <div className="mt-6 space-y-4">
         {q.isLoading ? (
@@ -572,11 +587,16 @@ export function Contact() {
       id="support"
       className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
     >
+      <div
+        className="section-bg"
+        style={{ ['--section-bg-image' as never]: `url(${asset('bg/contact.jpg')})` }}
+      />
       <SectionHead
         eyebrow="Get In Touch"
         title="Let's Build Something Together"
         sub="Open a conversation about roles, collaborations, or game projects."
       />
+
       <div className="mt-6 grid gap-5 lg:grid-cols-[1.2fr_1fr]">
         <form
           onSubmit={handleSubmit(onSubmit)}

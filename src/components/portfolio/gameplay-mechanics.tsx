@@ -18,7 +18,12 @@ export function GameplayMechanics() {
       id="mechanics"
       className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
     >
+      <div
+        className="section-bg"
+        style={{ ['--section-bg-image' as never]: `url(${asset('bg/mechanics.jpg')})` }}
+      />
       <div className="mb-5 flex items-end justify-between">
+
         <SectionHead
           eyebrow="Systems"
           title="Gameplay Mechanics"

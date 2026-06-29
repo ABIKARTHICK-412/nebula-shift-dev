@@ -13,18 +13,12 @@ export function Hero() {
   return (
     <section id="top" className="relative isolate w-full overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 -z-10">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "linear-gradient(135deg, #32353D 0%, #2B2E35 60%, #1B1B1F 100%)",
-          }}
-        />
-        <div className="absolute inset-0 grid-bg opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1B1B1F] via-[#1B1B1F]/85 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#1B1B1F] to-transparent" />
-      </div>
+      <div
+        className="section-bg"
+        style={{ ['--section-bg-image' as never]: `url(${asset('bg/hero.jpg')})` }}
+      />
+      <div className="absolute inset-0 -z-[9] grid-bg opacity-20" />
+
 
       <div className="mx-auto grid min-h-[88vh] max-w-7xl items-end gap-8 px-4 pb-12 pt-32 sm:px-6 lg:min-h-[92vh] lg:grid-cols-[1.4fr_1fr] lg:pb-20">
         <motion.div
