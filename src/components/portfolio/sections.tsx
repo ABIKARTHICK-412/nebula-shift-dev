@@ -94,7 +94,15 @@ export function RecentlyDeveloped() {
 
 export function Skills() {
   return (
-    <section id="toolkit" className="mx-auto mt-20 max-w-7xl px-4 sm:px-6">
+    <section
+      id="toolkit"
+      className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-[0.07] blur-2xl"
+        style={{ backgroundImage: `url(${asset(portfolio.backgrounds.skills)})` }}
+      />
       <SectionHead eyebrow="Skills" title="Technical Skills" />
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {portfolio.skillGroups.map((g) => {
@@ -134,7 +142,15 @@ export function Skills() {
 
 export function About() {
   return (
-    <section id="about" className="mx-auto mt-20 max-w-7xl px-4 sm:px-6">
+    <section
+      id="about"
+      className="relative isolate mx-auto mt-20 max-w-7xl overflow-hidden px-4 sm:px-6"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-[0.07] blur-2xl"
+        style={{ backgroundImage: `url(${asset(portfolio.backgrounds.about)})` }}
+      />
       <SectionHead eyebrow="Developer Profile" title="About The Developer" />
       <div className="mt-6 grid gap-5 lg:grid-cols-[300px_1fr]">
         {/* Profile card */}
