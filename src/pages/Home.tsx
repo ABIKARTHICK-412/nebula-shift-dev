@@ -2,6 +2,7 @@ import { Nav } from "@/components/portfolio/nav";
 import { Hero } from "@/components/portfolio/hero";
 import { FeaturedSpotlight } from "@/components/portfolio/featured-spotlight";
 import { Projects } from "@/components/portfolio/projects";
+import { GameplayMechanics } from "@/components/portfolio/gameplay-mechanics";
 import {
   About,
   Skills,
@@ -53,6 +54,7 @@ export default function Home() {
         <Hero />
         <FeaturedSpotlight />
         <RecentlyDeveloped />
+        <GameplayMechanics />
         <Projects />
         <Skills />
         <About />

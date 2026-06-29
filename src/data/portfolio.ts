@@ -38,6 +38,41 @@ export interface Project {
     github?: string;
     details?: string;
   };
+  media?: ProjectMedia;
+}
+
+export interface ProjectMedia {
+  banner?: string;
+  screenshot?: string;
+  gif?: string;
+  video?: string;
+  engineIcon?: string;
+}
+
+export interface GameplayMechanic {
+  id: string;
+  title: string;
+  engine: "Unity" | "Unreal Engine";
+  description: string;
+  media: { preview?: string; gif?: string; video?: string };
+  links?: { github?: string; demo?: string };
+  // Optional, future-proof fields — rendered only when present:
+  difficulty?: string;
+  engineVersion?: string;
+  category?: string;
+  docsUrl?: string;
+  articleUrl?: string;
+  sourceUrl?: string;
+}
+
+export interface BackgroundImages {
+  hero: string;
+  projects: string;
+  mechanics: string;
+  skills: string;
+  about: string;
+  activity: string;
+  contact: string;
 }
 
 export interface SkillGroup {
@@ -104,6 +139,8 @@ export interface PortfolioConfig {
   timeline: { year: string; title: string; description: string }[];
   github: { username: string };
   about: { bio: string; education: { degree: string; school: string; detail?: string }[] };
+  gameplayMechanics: GameplayMechanic[];
+  backgrounds: BackgroundImages;
 }
 
 export const portfolio: PortfolioConfig = {
@@ -450,4 +487,109 @@ export const portfolio: PortfolioConfig = {
       },
     ],
   },
+  // ── Background images (placeholders — drop files into public/bg/) ──────────
+  backgrounds: {
+    hero: "/bg/hero.jpg",
+    projects: "/bg/projects.jpg",
+    mechanics: "/bg/mechanics.jpg",
+    skills: "/bg/skills.jpg",
+    about: "/bg/about.jpg",
+    activity: "/bg/activity.jpg",
+    contact: "/bg/contact.jpg",
+  },
+  // ── Gameplay mechanics carousel (data-driven; add more by appending) ───────
+  gameplayMechanics: [
+    // TODO: add media (preview/gif/video) and links (github/demo) as systems ship.
+    {
+      id: "wall-jump",
+      title: "Wall Jump",
+      engine: "Unity",
+      description: "Kinematic wall detection with coyote-time and variable jump impulse for responsive platforming.",
+      media: {},
+    },
+    {
+      id: "third-person-shooting",
+      title: "Third Person Shooting",
+      engine: "Unreal Engine",
+      description: "Over-the-shoulder aim, hitscan + projectile weapons, and animation-driven recoil.",
+      media: {},
+    },
+    {
+      id: "enemy-ai",
+      title: "Enemy AI",
+      engine: "Unity",
+      description: "Behavior-tree driven NPCs with perception, patrol, and combat states.",
+      media: {},
+    },
+    {
+      id: "dialogue-system",
+      title: "Dialogue System",
+      engine: "Unity",
+      description: "Branching dialogue with conditions, variables, and typewriter UI.",
+      media: {},
+    },
+    {
+      id: "inventory-system",
+      title: "Inventory System",
+      engine: "Unity",
+      description: "Grid-based inventory with stacking, drag-and-drop, and ScriptableObject items.",
+      media: {},
+    },
+    {
+      id: "camera-controller",
+      title: "Camera Controller",
+      engine: "Unity",
+      description: "Cinemachine-style follow with damping, look-ahead, and collision avoidance.",
+      media: {},
+    },
+    {
+      id: "object-pooling",
+      title: "Object Pooling",
+      engine: "Unity",
+      description: "Pre-warmed pools to eliminate GC spikes during heavy spawn loads.",
+      media: {},
+    },
+    {
+      id: "save-system",
+      title: "Save System",
+      engine: "Unity",
+      description: "JSON-based save/load with versioning and slot management.",
+      media: {},
+    },
+    {
+      id: "state-machine",
+      title: "State Machine",
+      engine: "Unity",
+      description: "Generic FSM with typed transitions for player, AI, and UI flows.",
+      media: {},
+    },
+    {
+      id: "turn-based-grid",
+      title: "Turn Based Grid System",
+      engine: "Unity",
+      description: "Tile grid with pathfinding, action points, and turn queue.",
+      media: {},
+    },
+    {
+      id: "procedural-generation",
+      title: "Procedural Generation",
+      engine: "Unity",
+      description: "Seeded room/level generation with constraint-based layout rules.",
+      media: {},
+    },
+    {
+      id: "input-system",
+      title: "Input System",
+      engine: "Unity",
+      description: "Unity Input System bindings with rebinding UI and device switching.",
+      media: {},
+    },
+    {
+      id: "animation-controller",
+      title: "Animation Controller",
+      engine: "Unreal Engine",
+      description: "Animation Blueprint with state machines, blend spaces, and root motion.",
+      media: {},
+    },
+  ],
 };
