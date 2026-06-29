@@ -49,6 +49,21 @@
         }
       })(window.location);
     </script>
+    <script>
+      // Apply persisted theme before paint to avoid FOUC.
+      (function () {
+        try {
+          var t = localStorage.getItem("portfolio-theme") || "steam";
+          var allowed = ["steam", "light", "midnight", "synthwave", "forest"];
+          if (allowed.indexOf(t) === -1) t = "steam";
+          document.documentElement.setAttribute("data-theme", t);
+          if (t !== "light") document.documentElement.classList.add("dark");
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "steam");
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
