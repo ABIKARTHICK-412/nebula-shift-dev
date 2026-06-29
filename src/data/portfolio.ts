@@ -131,7 +131,7 @@ export interface PortfolioConfig {
   github: { username: string };
   about: { bio: string; education: { degree: string; school: string; detail?: string }[] };
   gameplayMechanics: GameplayMechanic[];
-  backgrounds: BackgroundImages;
+  
 }
 
 export const portfolio: PortfolioConfig = {
