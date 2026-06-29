@@ -4,8 +4,14 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   AAA Game Studio Dashboard theme
+   Inspiration: Steam, Epic Games Launcher, Unreal site, PlayStation Studios.
+   Matte surfaces, soft shadows, thin borders. No neon, no rainbow gradients.
+   ───────────────────────────────────────────────────────────────────────── */
+
 @theme inline {
-  --font-display: "Orbitron", "Space Grotesk", system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Manrope", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -39,39 +45,44 @@
 }
 
 :root {
-  --radius: 0.75rem;
-  /* Deep space dark sci-fi */
-  --background: oklch(0.13 0.03 265);
-  --foreground: oklch(0.97 0.01 240);
-  --card: oklch(0.18 0.035 265 / 0.6);
-  --card-foreground: oklch(0.97 0.01 240);
-  --popover: oklch(0.16 0.035 265);
-  --popover-foreground: oklch(0.97 0.01 240);
-  --primary: oklch(0.72 0.18 240); /* electric blue */
-  --primary-foreground: oklch(0.1 0.02 265);
-  --secondary: oklch(0.22 0.04 265);
-  --secondary-foreground: oklch(0.97 0.01 240);
-  --muted: oklch(0.22 0.03 265);
-  --muted-foreground: oklch(0.7 0.03 250);
-  --accent: oklch(0.65 0.22 300); /* violet */
-  --accent-foreground: oklch(0.97 0.01 240);
-  --destructive: oklch(0.65 0.24 25);
-  --destructive-foreground: oklch(0.97 0.01 240);
-  --border: oklch(1 0 0 / 8%);
-  --input: oklch(1 0 0 / 10%);
-  --ring: oklch(0.72 0.18 240);
+  --radius: 0.625rem;
 
-  --neon: oklch(0.78 0.2 230);
-  --neon-violet: oklch(0.68 0.24 300);
-  --neon-cyan: oklch(0.85 0.18 195);
+  /* Studio palette */
+  --background: #0F1115;
+  --foreground: #F8FAFC;
 
-  --surface: oklch(0.16 0.035 265);
-  --surface-2: oklch(0.2 0.04 265);
+  --surface: #171B22;       /* secondary bg */
+  --surface-2: #1E232D;     /* card */
+
+  --card: #1E232D;
+  --card-foreground: #F8FAFC;
+  --popover: #171B22;
+  --popover-foreground: #F8FAFC;
+
+  --primary: #3B82F6;            /* electric blue */
+  --primary-foreground: #0B0E13;
+  --secondary: #1E232D;
+  --secondary-foreground: #F8FAFC;
+  --muted: #1E232D;
+  --muted-foreground: #94A3B8;
+  --accent: #F59E0B;             /* amber */
+  --accent-foreground: #0B0E13;
+  --destructive: #EF4444;
+  --destructive-foreground: #F8FAFC;
+
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #3B82F6;
+
+  /* Legacy accent tokens — neutralised, kept for compatibility */
+  --neon: #3B82F6;
+  --neon-violet: #3B82F6;
+  --neon-cyan: #60A5FA;
 }
 
 .dark {
-  --background: oklch(0.13 0.03 265);
-  --foreground: oklch(0.97 0.01 240);
+  --background: #0F1115;
+  --foreground: #F8FAFC;
 }
 
 @layer base {
@@ -87,15 +98,16 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    /* Subtle vignette only — no rainbow auras */
     background-image:
-      radial-gradient(ellipse 80% 60% at 20% -10%, oklch(0.55 0.2 240 / 0.25), transparent 60%),
-      radial-gradient(ellipse 60% 50% at 100% 10%, oklch(0.55 0.22 300 / 0.22), transparent 60%),
-      radial-gradient(ellipse 70% 50% at 50% 110%, oklch(0.55 0.18 195 / 0.18), transparent 60%);
+      radial-gradient(ellipse 70% 50% at 50% -10%, rgba(59, 130, 246, 0.08), transparent 70%),
+      radial-gradient(ellipse 60% 50% at 100% 110%, rgba(245, 158, 11, 0.04), transparent 70%);
     background-attachment: fixed;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
+    font-weight: 600;
   }
 }
 
@@ -103,57 +115,76 @@
   .font-display { font-family: var(--font-display); }
   .text-balance { text-wrap: balance; }
 
+  /* Matte card surfaces — replaces glassmorphism */
   .glass {
-    background: linear-gradient(180deg, oklch(0.22 0.04 265 / 0.55), oklch(0.16 0.035 265 / 0.45));
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    border: 1px solid oklch(1 0 0 / 0.08);
+    background: var(--surface-2);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.03) inset,
+      0 1px 2px rgba(0, 0, 0, 0.4);
+    transition: background-color 200ms ease, border-color 200ms ease, transform 200ms ease;
   }
   .glass-strong {
-    background: linear-gradient(180deg, oklch(0.24 0.04 265 / 0.75), oklch(0.18 0.035 265 / 0.65));
-    backdrop-filter: blur(18px) saturate(160%);
-    border: 1px solid oklch(1 0 0 / 0.1);
+    background: linear-gradient(180deg, #1E232D 0%, #171B22 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.04) inset,
+      0 8px 24px -12px rgba(0, 0, 0, 0.6);
   }
+
+  /* Subtle ring instead of glow */
   .neon-border {
     box-shadow:
-      0 0 0 1px oklch(0.72 0.18 240 / 0.5),
-      0 0 24px -4px oklch(0.72 0.18 240 / 0.55),
-      inset 0 0 24px -8px oklch(0.72 0.18 240 / 0.25);
+      0 0 0 1px rgba(59, 130, 246, 0.35),
+      0 4px 12px -6px rgba(0, 0, 0, 0.6);
   }
   .neon-text {
-    color: oklch(0.85 0.18 230);
-    text-shadow: 0 0 18px oklch(0.72 0.22 240 / 0.6);
+    color: var(--primary);
+    text-shadow: none;
   }
+
+  /* Restrained text emphasis — light blue tint, no rainbow */
   .text-gradient {
-    background: linear-gradient(120deg, oklch(0.85 0.18 230), oklch(0.7 0.24 300) 50%, oklch(0.88 0.18 195));
+    background: linear-gradient(180deg, #F8FAFC 0%, #CBD5E1 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
+
+  /* Disabled — keep selector valid so existing markup is harmless */
   .scanlines::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-image: repeating-linear-gradient(0deg, oklch(1 0 0 / 0.03) 0 1px, transparent 1px 3px);
     pointer-events: none;
-    mix-blend-mode: overlay;
+    background: none;
   }
+
   .grid-bg {
     background-image:
-      linear-gradient(oklch(1 0 0 / 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, oklch(1 0 0 / 0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 85%);
   }
+
+  /* Replace pulsing neon with steady soft shadow */
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px -4px oklch(0.72 0.2 240 / 0.5); }
-    50% { box-shadow: 0 0 40px -2px oklch(0.72 0.2 240 / 0.9); }
+    0%, 100% { box-shadow: 0 8px 22px -10px rgba(59, 130, 246, 0.55); }
+    50%      { box-shadow: 0 10px 26px -8px rgba(59, 130, 246, 0.7); }
   }
-  .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+  .animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
 
   @keyframes float-y {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-4px); }
   }
-  .animate-float { animation: float-y 6s ease-in-out infinite; }
+  .animate-float { animation: float-y 8s ease-in-out infinite; }
+
+  /* Premium card hover lift */
+  .group:hover > .glass,
+  .glass:hover {
+    background: #252C38;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
 }

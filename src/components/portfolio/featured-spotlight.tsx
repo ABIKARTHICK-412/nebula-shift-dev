@@ -17,8 +17,8 @@ export function FeaturedSpotlight({ role }: { role: ViewerRole }) {
         transition={{ duration: 0.6 }}
         className="glass-strong relative overflow-hidden rounded-3xl p-6 sm:p-8"
       >
-        <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-accent/30 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 -left-10 h-64 w-64 rounded-full bg-primary/30 blur-3xl" />
+        <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-10 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
 
         <div className="grid items-center gap-6 lg:grid-cols-[1.2fr_1fr]">
           <div>

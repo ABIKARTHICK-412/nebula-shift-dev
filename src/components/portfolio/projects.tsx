@@ -76,11 +76,11 @@ function ProjectCard({ project }: { project: Project }) {
       transition={{ duration: 0.35 }}
       className="glass group relative flex flex-col overflow-hidden rounded-2xl"
     >
-      <div className="relative aspect-[16/10] overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 grid-bg opacity-60" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20" />
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-white/5 bg-[#171B22]">
+        <div className="absolute inset-0 grid-bg opacity-50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="font-display text-2xl font-bold tracking-wider text-foreground/30">
+          <div className="font-display text-2xl font-semibold tracking-wide text-foreground/25">
             {project.title}
           </div>
         </div>
@@ -88,13 +88,12 @@ function ProjectCard({ project }: { project: Project }) {
           {project.tags.map((t) => (
             <span
               key={t}
-              className="rounded-md border border-white/10 bg-black/40 px-2 py-0.5 text-[10px] uppercase tracking-widest text-foreground/80 backdrop-blur"
+              className="rounded-md border border-white/10 bg-black/50 px-2 py-0.5 text-[10px] uppercase tracking-widest text-foreground/80 backdrop-blur"
             >
               {t.replace("-", " ")}
             </span>
           ))}
         </div>
-        <div className="scanlines" />
       </div>
 
       <div className="flex flex-1 flex-col p-4">
